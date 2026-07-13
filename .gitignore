@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+
+venv/
+.env
+
+.pytest_cache/
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Logs
+*.log
+
+# SQLite
+*.db
+*.sqlite3
+
+# Environment
+.env
+
+# Node
+node_modules/
+
+dist/
+build/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Coverage
+.coverage
+htmlcov/
+
+# ChromaDB
+chroma_db/
+
+# Cache
+.cache/
+
+# Temporary
+*.tmp

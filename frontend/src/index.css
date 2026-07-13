@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .metric-card {
+    @apply bg-black p-6 rounded-[20px] text-white shadow-xl mb-6 h-[140px] flex flex-col justify-center text-center border border-zinc-800 transition-all duration-300 hover:bg-zinc-900;
+  }
+  
+  .reason-card {
+    @apply bg-white p-6 rounded-[20px] border-l-[6px] border-zinc-800 shadow-sm h-[140px] flex flex-col justify-center text-sm leading-relaxed text-zinc-800 font-medium;
+  }
+
+  .role-leaderboard-card {
+    @apply bg-zinc-50 p-5 rounded-2xl border-l-[5px] border-black mb-3 shadow-sm transition-all duration-300 h-[90px] flex items-center cursor-pointer hover:-translate-y-0.5 hover:shadow-lg hover:bg-white;
+  }
+}
+
+body {
+  @apply bg-zinc-50 text-zinc-900 font-sans;
+}

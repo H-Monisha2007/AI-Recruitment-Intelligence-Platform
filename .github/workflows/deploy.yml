@@ -1,0 +1,50 @@
+name: Enterprise CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install Dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+          
+      - name: Lint with flake8
+        run: |
+          pip install flake8
+          flake8 backend --count --select=E9,F63,F7,F82 --show-source --statistics
+          
+      - name: Test with pytest
+        run: |
+          cd backend
+          pytest --cov=app tests/
+
+  build-docker-images:
+    needs: lint-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+        
+      - name: Build Backend Image
+        run: |
+          docker build ./backend -t talent-scout-backend:latest
+          
+      - name: Build Frontend Image
+        run: |
+          docker build ./frontend -t talent-scout-frontend:latest
